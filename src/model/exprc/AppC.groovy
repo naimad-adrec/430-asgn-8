@@ -1,9 +1,9 @@
 package model.exprc
 
 class AppC implements ExprC {
-    private ExprC function;
+    ExprC function;
 
-    private List<ExprC> arguments;
+    List<ExprC> arguments;
 
     AppC(function, arguments) {
         this.function = function;

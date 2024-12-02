@@ -1,7 +1,7 @@
 package model.exprc
 
 class IdC implements ExprC {
-    private String symbol;
+    String symbol;
 
     IdC(symbol) {
         this.symbol = symbol;

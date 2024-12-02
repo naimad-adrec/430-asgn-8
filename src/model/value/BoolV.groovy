@@ -1,7 +1,7 @@
 package model.value
 
 class BoolV implements Value{
-    private Boolean bool;
+    Boolean bool;
 
     BoolV(bool) {
         this.bool = bool;

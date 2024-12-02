@@ -1,11 +1,11 @@
 package model.exprc
 
 class IfC implements ExprC {
-    private ExprC test;
+    ExprC test;
 
-    private ExprC then;
+    ExprC then;
 
-    private ExprC elseExpr;
+    ExprC elseExpr;
 
     IdC(test, then, elseExpr) {
         this.test = test;

@@ -3,11 +3,11 @@ package model.value
 import model.exprc.ExprC
 
 class ClosV implements Value {
-    private List<String> arguments;
+    List<String> arguments;
 
-    private ExprC body;
+    ExprC body;
 
-    private List<Binding> env;
+    List<Binding> env;
 
     ClosV(arguments, body, env) {
         this.arguments = arguments;
