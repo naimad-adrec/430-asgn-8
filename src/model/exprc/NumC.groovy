@@ -1,5 +1,9 @@
 package model.exprc
 
 class NumC implements ExprC {
-    private Number number;
+    Number number;
+
+    NumC(number) {
+        this.number = number;
+    }
 }

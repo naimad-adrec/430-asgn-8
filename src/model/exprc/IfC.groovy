@@ -6,4 +6,10 @@ class IfC implements ExprC {
     private ExprC then;
 
     private ExprC elseExpr;
+
+    IdC(test, then, elseExpr) {
+        this.test = test;
+        this.then = then;
+        this.elseExpr = elseExpr;
+    }
 }

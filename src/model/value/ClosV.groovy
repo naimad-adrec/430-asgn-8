@@ -8,4 +8,10 @@ class ClosV implements Value {
     private ExprC body;
 
     private List<Binding> env;
+
+    ClosV(arguments, body, env) {
+        this.arguments = arguments;
+        this.body = body;
+        this.env = env;
+    }
 }
