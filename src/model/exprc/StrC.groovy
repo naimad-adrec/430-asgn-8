@@ -1,0 +1,5 @@
+package model.exprc
+
+class StrC implements ExprC {
+    private String string;
+}
