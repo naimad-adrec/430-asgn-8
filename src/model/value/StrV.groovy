@@ -1,9 +1,9 @@
 package model.value
 
 class StrV implements Value {
-    String string;
+    String string
 
     StrV(string) {
-        this.string = string;
+        this.string = string
     }
 }

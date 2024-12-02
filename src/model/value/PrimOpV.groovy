@@ -1,9 +1,9 @@
 package model.value
 
 class PrimOpV implements Value{
-    String op;
+    String op
 
     PrimOpV(op) {
-        this.op = op;
+        this.op = op
     }
 }

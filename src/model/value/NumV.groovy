@@ -1,9 +1,9 @@
 package model.value
 
 class NumV implements Value {
-    Number number;
+    Number number
 
     NumV(number) {
-        this.number = number;
+        this.number = number
     }
 }

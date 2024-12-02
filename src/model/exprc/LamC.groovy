@@ -1,12 +1,12 @@
 package model.exprc
 
 class LamC implements ExprC {
-    List<String> args;
+    List<String> args
 
-    ExprC body;
+    ExprC body
 
     LamC(args, body) {
-        this.args = args;
-        this.body = body;
+        this.args = args
+        this.body = body
     }
 }

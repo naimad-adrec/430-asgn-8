@@ -7,7 +7,7 @@ class ClosV implements Value {
 
     ExprC body;
 
-    List<Binding> env;
+    Map<String, Value> env
 
     ClosV(arguments, body, env) {
         this.arguments = arguments;

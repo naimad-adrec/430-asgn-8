@@ -1,9 +1,9 @@
 package model.exprc
 
 class StrC implements ExprC {
-    String string;
+    String string
 
     StrC(string) {
-        this.string = string;
+        this.string = string
     }
 }
