@@ -22,7 +22,7 @@ static void main(String[] args) {
     println serialize(Interpreter.interp(new IdC("true"), topEnv))
 }
 
-private String serialize(final Value value) {
+private static String serialize(final Value value) {
     switch (value) {
         case NumV:
             return value.number.toString()
