@@ -3,7 +3,27 @@ import model.value.*
 
 class Interpreter {
 
-    static Value interp(final ExprC exprC, Map<String, Value> env) {
+    static String topInterp(final ExprC expr) {
+        HashMap<String, Value> topEnv = new HashMap<String, Value>()
+        topEnv.put("true", new BoolV(true))
+        topEnv.put("false", new BoolV(false))
+        topEnv.put("+", new PrimOpV("+"))
+        topEnv.put("-", new PrimOpV("-"))
+        topEnv.put("*", new PrimOpV("*"))
+        topEnv.put("/", new PrimOpV("/"))
+        topEnv.put("<=", new PrimOpV("<="))
+        topEnv.put("equal?", new PrimOpV("equal?"))
+        topEnv.put("error", new PrimOpV("error"))
+        topEnv.put("println", new PrimOpV("println"))
+        topEnv.put("read-num", new PrimOpV("read-num"))
+        topEnv.put("read-str", new PrimOpV("read-str"))
+        topEnv.put("seq", new PrimOpV("seq"))
+        topEnv.put("++", new PrimOpV("++"))
+
+        return serialize(interp(expr, topEnv))
+    }
+
+     static Value interp(final ExprC exprC, Map<String, Value> env) {
         switch (exprC) {
             case NumC:
                 return new NumV(exprC.number)
