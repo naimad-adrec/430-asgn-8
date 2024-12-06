@@ -35,7 +35,7 @@ class Interpreter {
                 final Value testResult = interp(exprC.test, env)
                 switch (testResult) {
                     case BoolV:
-                        if (testResult.bool == true) {
+                        if (testResult.bool) {
                             return interp(exprC.then, env)
                         }
 
@@ -48,14 +48,15 @@ class Interpreter {
                 return new ClosV(exprC.args, exprC.body, new HashMap(env))
             case AppC:
                 final Value function = interp(exprC.function, env)
+                final List<Value> appArgs = exprC.arguments.collect {ExprC it -> interp(it, env)}
                 switch (function) {
                     case ClosV:
-                        if (exprC.arguments.size() != function.arguments.size()) {
+                        if (appArgs.size() != function.arguments.size()) {
                             throw new RuntimeException("AAQZ mismatch arguments")
                         }
 
-                        for (int i = 0; i < exprC.arguments.size(); i++) {
-                            function.env.put(function.arguments.get(i), interp(exprC.arguments.get(i), function.env))
+                        for (int i = 0; i < appArgs.size(); i++) {
+                            function.env.put(function.arguments.get(i), appArgs.get(i))
                         }
 
                         return interp(function.body, function.env)

@@ -71,4 +71,19 @@ class InterpreterTest {
         }
     }
 
+    @Test
+    void testFuncAsArg() {
+        def expr = new AppC(
+                new LamC(["f", "x", "y"],
+                        new AppC(new IdC("f"), [new IdC("x"), new IdC("y")])),
+                [new LamC(["a", "b"],
+                        new AppC(new IdC("+"), [new IdC("a"), new IdC("b")])),
+                 new NumC(2),
+                 new NumC(3)])
+
+        def result = Interpreter.topInterp(expr)
+
+        assertEquals("5", result)
+    }
+
 }
