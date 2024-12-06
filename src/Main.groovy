@@ -1,10 +1,5 @@
-import model.exprc.IdC
-import model.value.BoolV
-import model.value.ClosV
-import model.value.NumV
-import model.value.PrimOpV
-import model.value.StrV
-import model.value.Value
+import model.exprc.*
+import model.value.*
 
 static void main(String[] args) {
 
