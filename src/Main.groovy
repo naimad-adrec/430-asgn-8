@@ -19,22 +19,7 @@ static void main(String[] args) {
     topEnv.put("seq", new PrimOpV("seq"))
     topEnv.put("++", new PrimOpV("++"))
 
-    println serialize(Interpreter.interp(new IdC("true"), topEnv))
-}
+    ExprC prog = new AppC(new IdC("+"), Arrays.asList(new NumC(2), new NumC(3)))
 
-private static String serialize(final Value value) {
-    switch (value) {
-        case NumV:
-            return value.number.toString()
-        case StrV:
-            return value.string.toString()
-        case BoolV:
-            return value.bool.toString()
-        case ClosV:
-            return "#<procedure>"
-        case PrimOpV:
-            return "#<primop>"
-    }
-
-    throw new RuntimeException(String.format("AAQZ expected Value but received: %s", value))
+    println Interpreter.serialize(Interpreter.interp(prog, topEnv))
 }
