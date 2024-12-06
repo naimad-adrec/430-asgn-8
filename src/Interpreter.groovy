@@ -25,7 +25,7 @@ class Interpreter {
                                 serialize(testResult)))
                 }
             case LamC:
-                return new ClosV(exprC.args, exprC.body, env)
+                return new ClosV(exprC.args, exprC.body, new HashMap(env))
             case AppC:
                 final Value function = interp(exprC.function, env)
                 switch (function) {
@@ -40,7 +40,11 @@ class Interpreter {
 
                         return interp(function.body, function.env)
                     case PrimOpV:
-                        if (exprC.arguments.size() == 0) {
+                        if (function.op == "seq")
+                            return primopSeq(exprC, env)
+                        else if (function.op == "++")
+                            return primopPlusPlus(exprC, env)
+                        else if (exprC.arguments.size() == 0) {
                             switch (function.op) {
                                 case "read-num":
                                     return primopReadNum()
@@ -68,13 +72,6 @@ class Interpreter {
                                     return primopArith(function.op, firstArg, secondArg)
                                 case "equal?":
                                     return primopEqual(firstArg, secondArg)
-                            }
-                        } else {
-                            switch (function.op) {
-                                case "seq":
-                                    return primopSeq(exprC, env)
-                                case "++":
-                                    return primopPlusPlus(exprC, env)
                             }
                         }
                         throw new RuntimeException(String.format("AAQZ incorrect function: %s", serialize(function)))
@@ -149,7 +146,7 @@ class Interpreter {
 
         final NumV secondNum = secondArg as NumV
 
-        if(op.equals("/") and secondNum.number == 0)
+        if(op == "/" && secondNum.number == 0)
             throw new RuntimeException(String.format("AAQZ divide by 0"))
 
         final NumV firstNum = firstArg as NumV
